@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  cli:
+    # Extend the stock cli image (see .docksal/services/cli/Dockerfile)
+    image: ${COMPOSE_PROJECT_NAME_SAFE}/cli
+    build: services/cli
+    # Custom command to run when the container starts
+    # Always use "bash -lc 'command'" to initialize the docker user environment
+    # Using nodemon for live reload
+    command: ["bash", "-lc", "nodemon index.js"]
